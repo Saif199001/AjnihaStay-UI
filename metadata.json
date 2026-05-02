@@ -1,0 +1,5 @@
+{
+  "name": "RentFlow SaaS",
+  "description": "A modern Rental Management System for PG, Hostel, and Property owners with JWT authentication and comprehensive dashboard.",
+  "requestFramePermissions": []
+}
