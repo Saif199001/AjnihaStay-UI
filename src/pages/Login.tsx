@@ -24,9 +24,9 @@ const Login = () => {
         password,
       });
 
-      const access = response.data.tokens.access;
-      const refresh = response.data.tokens.refresh;
-      const user = response.data.user;
+      const access = response.data.access;
+      const refresh = response.data.refresh;
+      const user = { email, };
 
       login(access, refresh, user);
       navigate('/');

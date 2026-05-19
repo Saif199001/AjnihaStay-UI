@@ -22,25 +22,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = authStorage.getAccessToken();
 
-    if (token) {
-      setUser({
-        id: 'temp',
-        email: 'logged_in_user'
-      });
+    const token = authStorage.getAccessToken();
+    const storedUser = localStorage.getItem("user");
+
+    if (token && storedUser) {
+      setUser(JSON.parse(storedUser));
     }
 
     setIsLoading(false);
+
   }, []);
 
   const login = (access: string, refresh: string, userData: User) => {
     authStorage.setTokens(access, refresh);
+    localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
   };
 
   const logout = () => {
+
     authStorage.clearTokens();
+
+    localStorage.removeItem("user");
+
     setUser(null);
   };
 
